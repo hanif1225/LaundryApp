@@ -10,7 +10,8 @@
         <link href="{{asset('template/css/bootstrap.min.css')}}"   rel="stylesheet">
         <link rel="stylesheet" href="{{asset('template/custom/css/style.css')}}">
         <!-- Datatable  -->
-        <link rel="stylesheet" href="{{asset('template/css/dataTables.dataTables.min.css')}}">
+        <link rel="stylesheet" href="{{asset('template/dataTable/dataTables.bootstrap5.min.css')}}">
+        <link rel="stylesheet" href="{{asset('template/dataTable/bootstrap.min.css')}}">
     </head>
 
     <body>

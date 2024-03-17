@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Yajra\DataTables\DataTables;
 use App\Models\User;
+
 
 class UserController extends Controller
 {
@@ -22,6 +24,11 @@ class UserController extends Controller
         return view('management_users.index');
     }
 
+    public function dataTable()
+    {
+        return DataTables::of(User::limit(10))->make(true);
+    }
+
     /**
      * Show the form for creating a new resource.
      */
@@ -35,18 +42,18 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        // $file = $request->file('picture');
-        // $fileName = time() . '.' . $file->getClientOriginalExtension();
-        // $file->storeAs('public/images_user', $fileName); //php artisan storage:link
+        $file = $request->file('picture');
+        $fileName = time() . '.' . $file->getClientOriginalExtension();
+        $file->storeAs('public/images_user', $fileName); //php artisan storage:link
         $empData = [
             'name' => $request->fname, 
-            'role' => '2', 
+            'role' => 'customer', 
             'username' => $request->fusername, 
             'no_hp' => $request->fno_hp, 
             'address' => $request->faddress, 
             'email' => $request->femail, 
             'password' => $request->fpassword, 
-            'picture' => $request->fpicture,
+            'picture' => $fileName,
         ];
         User::create($empData);
         return response()->json([
