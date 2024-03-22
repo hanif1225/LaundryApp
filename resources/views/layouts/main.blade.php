@@ -8,10 +8,11 @@
         <title>Sidebar With Bootstrap</title>
         <link href="{{asset('template/line_icons/web-font-files/lineicons.css')}}" rel="stylesheet" /> 
         <link href="{{asset('template/css/bootstrap.min.css')}}"   rel="stylesheet">
+        <link rel="stylesheet" href="{{asset('template/custom/css/custom.css')}}">
         <link rel="stylesheet" href="{{asset('template/custom/css/style.css')}}">
         <!-- Datatable  -->
         <link rel="stylesheet" href="{{asset('template/dataTable/dataTables.bootstrap5.min.css')}}">
-        <link rel="stylesheet" href="{{asset('template/dataTable/bootstrap.min.css')}}">
+        <!-- <link rel="stylesheet" href="{{asset('template/dataTable/bootstrap.min.css')}}"> -->
     </head>
 
     <body>

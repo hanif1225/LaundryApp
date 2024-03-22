@@ -1,13 +1,13 @@
 @extends('layouts.main')
 @section('content')
 <div class="card">
-    <div class="card-header">
-        <h1><i class="lni lni-users medium"></i> Manage User</h1>
+    <div class="card-header" style="background-color: #0e2238; color:white">
+        <h4><i class="lni lni-users medium"></i> Manage User</h4>
     </div>
     <div class="card-body">
         <blockquote class="blockquote mb-0">
             <div class="p-2">
-                <button class="btn btn-success" onclick="AddUser()"><i class="lni lni-circle-plus"></i> Add Data</button>
+                <button class="btn" style="background-color: #0e2238; color:white" onclick="AddUser()"><i class="lni lni-circle-plus"></i> Add Data</button>
             </div>
             <div class="table-responsive">
                 <table class="table table-striped small" id="datatable">

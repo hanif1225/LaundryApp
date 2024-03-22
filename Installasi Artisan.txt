@@ -1,0 +1,4 @@
+- php artisan storage:link
+- composer require yajra/laravel-datatables-oracle
+- masukkan pengaturan datatables ke config -> app
+- masukka jquer dan css nya

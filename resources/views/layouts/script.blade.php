@@ -5,6 +5,7 @@
 <!-- Datatable -->
 <!-- <script src="{{asset('template/js/dataTables.min.js')}}"></script> -->
 <script src="{{asset('template/dataTable/jquery3.5.js')}}"></script> 
+
 <script src="{{asset('template/dataTable/jquery.dataTables.min.js')}}"></script> 
 <script src="{{asset('template/dataTable/dataTables.bootstrap5.min.js')}}"></script> 
 

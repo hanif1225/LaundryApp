@@ -34,8 +34,7 @@
             {
                 "data": "id", "render": function (data) {
                     return "<button class='btn btn-primary btn-sm mr-1' type='button' onclick='EditData(" + data + ")' ><i class='lni lni-pencil-alt'></i></button>" +
-                            "<button class='btn btn-warning btn-sm' type='button' onclick='detailData(`" + data + "`)' ><i class='lni lni-search-alt'></i></button>"+
-                            "<button class='btn btn-danger btn-sm' type='button' onclick='deleteData(`" + data + "`)' ><i class='lni lni-trash-can'></i></button>"
+                            "<button class='btn btn-warning btn-sm' type='button' onclick='detailModal()' ><i class='lni lni-search-alt'></i></button>"
                             },
                             "orderable": false,
                             "searchable": false,
@@ -63,7 +62,7 @@
         e.preventDefault();
         const fd = new FormData(this);
     $.ajax({
-        url:'http://127.0.0.1:8000/management_users',
+        url: '{{ route('store_data_user') }}',
         method: 'post',
         data: fd,
         cache: false,
@@ -123,64 +122,7 @@
         });
     });
 
-    function detailData(id) {
-        $.ajax({
-            type: 'GET',
-            dataType: "JSON",
-            cotentType: "application/json; charset=utf-8",
-            url: '{{route('detail_data_user')}}',
-            data: {
-                id:id,
-            _token: '{{ csrf_token() }}'
-          },
-            success: function (data) {
-
-                $('#detail_picture').attr('src', 'storage/images_user/' + data["picture"])
-                $("#detail_name").html(data["name"])
-                $("#detail_username").html(data["username"])
-                $("#detail_address").html(data["address"])
-                $("#detail_no_hp").html(data["no_hp"])
-                $("#detail_email").html(data["email"])
-
-                $("#form-detail-users").modal("show")
-                console.log(data.name)
-            },
-            fail: function (xhr, textStatus, errorThrown) {
-                console.log(errorThrown)
-            }
-        })
+    function detailModal() {
+        $("#form-detail-users").modal("show");
     }
-
-    function deleteData(id) {
-        Swal.fire({
-          title: 'Are you sure?',
-          text: "You won't be able to revert this!",
-          icon: 'warning',
-          showCancelButton: true,
-          confirmButtonColor: '#3085d6',
-          cancelButtonColor: '#d33',
-          confirmButtonText: 'Yes, delete it!'
-        }).then((result) => {
-          if (result.isConfirmed) {
-            $.ajax({
-              url: '{{ route('delete_data_user') }}',
-              method: 'delete',
-              data: {
-                id: id,
-                _token: '{{ csrf_token() }}'
-              },
-              success: function(response) {
-                console.log(response);
-                Swal.fire(
-                  'Deleted!',
-                  'Your file has been deleted.',
-                  'success'
-                )
-                loadData();
-              }
-            });
-          }
-        })
-      };
-
 </script>

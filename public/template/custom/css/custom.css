@@ -1,0 +1,9 @@
+.error-data{
+    color : red;
+    border-color: red;
+}
+
+.custom-color{
+    background-color : #0e2238;
+    color :white;
+}
