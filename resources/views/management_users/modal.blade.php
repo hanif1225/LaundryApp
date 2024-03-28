@@ -6,7 +6,7 @@
         <h5 class="modal-title" id="form-user-modal">Form Users</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <form action="#" method="POST" id="add_user" enctype="multipart/form-data">
+      <form action="#" class="modal-user" method="POST" id="add_user" enctype="multipart/form-data">
           @csrf
           <div class="modal-body">
             <div class="mb-3">
@@ -42,6 +42,66 @@
             <div class="mb-3">
                 <label for="picture" class="form-label">Picture</label>
                 <input type="file" class="form-control" id="picture" name="picture" required>
+                <span class="picture_error error-data"></span>
+            </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Edit Users -->
+<div class="modal fade" id="form-edit-users" tabindex="-1" aria-labelledby="form-edit-user" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="form-edit-user">Form Edit Users</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <form action="#" class="modal-edit-user" method="POST" id="update_user" enctype="multipart/form-data">
+          @csrf
+          <div class="modal-body">
+            <div class="mb-3">
+              <img src="" id="edit_picture" class="img-preview img-fluid mb-3 col-sm-5 mx-auto d-block">
+            </div>
+            <input type="hidden" name="id" id="id">
+            <div class="mb-3">
+                <label for="name" class="form-label">Name</label>
+                <input type="text" class="form-control" id="name" name="name">
+                <span class="name_error error-data"></span>
+            </div>
+            <div class="mb-3">
+                <label for="username" class="form-label">Username</label>
+                <input type="text" class="form-control" id="username" name="username">
+                <span class="username_error error-data"></span>
+            </div>
+            <div class="mb-3">
+                <label for="no_hp" class="form-label">No HP</label>
+                <input type="text" class="form-control" id="no_hp" name="no_hp">
+                <span class="no_hp_error error-data"></span>
+            </div>
+            <div class="mb-3">
+                <label for="address" class="form-label">Address</label>
+                <input type="text" class="form-control" id="address" name="address">
+                <span class="address_error error-data"></span>
+            </div>
+            <div class="mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" class="form-control" id="email" name="email">
+                <span class="email_error error-data"></span>
+            </div>
+            <div class="mb-3">
+                <label for="password" class="form-label">Password</label>
+                <input type="password" class="form-control" id="password" name="password">
+                <span class="password_error error-data"></span>
+            </div>
+            <div class="mb-3">
+                <label for="picture" class="form-label">Picture</label>
+                <input type="file" class="form-control" id="picture" name="picture">
                 <span class="picture_error error-data"></span>
             </div>
       </div>

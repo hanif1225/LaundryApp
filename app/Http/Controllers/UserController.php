@@ -23,6 +23,7 @@ class UserController extends Controller
     public function index()
     {
         return view('management_users.index');
+
     }
 
     public function dataTable()
@@ -95,17 +96,60 @@ class UserController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Request $request)
     {
-        //
+        $id = $request->id;
+        $data = User::find($id);
+        return response()->json($data);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request)
     {
-        //
+        $data = User::find($request->id);
+
+        $ListData = [
+            'name'      => 'required|max:255',
+            'no_hp'     => 'required',
+            'address'   => 'required',
+            'password'  => 'required|min:8',
+            'picture'   => 'mimes:png,jpg,jpeg,svg|max:2500'
+        ];
+
+        if($request->username != $data->username)
+        {
+            $ListData['username'] = 'required|unique:users';
+        }
+
+        if($request->email != $data->email)
+        {
+            $ListData['email'] = 'required|email|unique:users';
+        }
+
+        $validatedData = $request->validate($ListData);
+
+        $fileName = '';
+
+        if ($request->hasFile('picture')) {
+            $file = $request->file('picture');
+            $fileName = time() . '.' . $file->getClientOriginalExtension();
+            $file->storeAs('public/images_user', $fileName);
+             if ($data->picture) {
+                 Storage::delete('public/images_user/' . $data->picture);
+             }
+        } else {
+            $fileName = $data->picture;
+        }
+
+        $validatedData['picture'] = $fileName;
+
+
+        $data->update($validatedData);
+         return response()->json([
+             'status' => 200,
+         ]);
     }
 
     /**
